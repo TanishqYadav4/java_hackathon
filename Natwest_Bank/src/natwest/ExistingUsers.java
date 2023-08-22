@@ -1,30 +1,30 @@
 package natwest;
 
 enum ExistingUsers {
-    USER1("Tanishq", "Yadav", "123 Main St", "City1", 9000000001L, 1000.0),
-    USER2("Naveen", "Jangra", "456 Elm St", "City2", 9000000002L, 2000.0),
-    USER3("Utkarsh", "Singh", "456 Nightmare St", "City3", 9000000003L, 3000.0),
-    USER4("Vaibhav", "Ahuja", "458 Carcosa St", "City4", 9000000004L, 4000.0),
-    USER5("Simran", "Makhijani", "459 User St", "City5", 9000000005L, 5000.0)
-    ;
+    USER1(1000, "Tanishq", "Yadav", "123 Main St", "City1", 9000000001L, 100001),
+    USER2(2000, "Naveen", "Jangra", "456 Elm St", "City2", 9000000002L, 100002),
+    USER3(3000,"Utkarsh", "Singh", "456 Nightmare St", "City3", 9000000003L, 100003),
+    USER4(4000,"Vaibhav", "Ahuja", "458 Carcosa St", "City4", 9000000004L, 100004),
+    USER5(5000,"Simran", "Makhijani", "459 User St", "City5", 9000000005L, 100005);
+
+    private double accountBalance;
 
     private String firstName;
     private String lastName;
     private String address;
     private String city;
     private Long phoneNumber;
-    private double initialDeposit;
 
     private long accountNumber;
 
-    ExistingUsers(String firstName, String lastName, String address, String city, Long phoneNumber, double initialDeposit) {
+    ExistingUsers(double accountBalance, String firstName, String lastName, String address, String city, Long phoneNumber, long accountNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.city = city;
         this.phoneNumber = phoneNumber;
-        this.initialDeposit = initialDeposit;
         this.accountNumber = accountNumber;
+        this.accountBalance = accountBalance;
     }
 
     public String getFirstName() {
@@ -47,11 +47,21 @@ enum ExistingUsers {
         return phoneNumber;
     }
 
-    public double getInitialDeposit() {
-        return initialDeposit;
-    }
+
 
     public long getAccountNumber() {
         return accountNumber;
+    }
+
+    public void deposit(double amount) {
+        this.accountBalance += amount;
+    }
+
+    public void withdraw(double amount) {
+        this.accountBalance -= amount;
+    }
+
+    public void transfer(double amount) {
+        this.accountBalance -= amount;
     }
 }
